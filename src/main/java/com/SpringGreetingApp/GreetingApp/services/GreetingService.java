@@ -18,6 +18,10 @@ public class GreetingService {
         return "Hello World!";
     }
 
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+
     public GreetingEntity saveGreetingMessage(String message) {
         GreetingEntity greeting = new GreetingEntity(message);
         return greetingRepository.save(greeting);
