@@ -21,10 +21,14 @@ public class GreetingController {
     public ResponseEntity<Greeting> getGreeting() {
         return ResponseEntity.ok(new Greeting(greetingService.getGreetingMessage()));
     }
-
     @GetMapping("/greetings")
     public List<GreetingEntity> getAllGreetings() {
         return greetingService.getAllGreetings();
+  
+    @GetMapping("/greeting/{id}")
+    public GreetingEntity getGreetingById(@PathVariable Long id) {
+        return greetingService.getGreetingById(id);
+
     }
 
     @PostMapping("/greeting")

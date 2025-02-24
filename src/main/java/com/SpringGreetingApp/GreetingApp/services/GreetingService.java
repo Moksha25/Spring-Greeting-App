@@ -39,4 +39,10 @@ public class GreetingService {
         GreetingEntity greeting = new GreetingEntity(message);
         return greetingRepository.save(greeting);
     }
+
+    public GreetingEntity getGreetingById(Long id) {
+        Optional<GreetingEntity> greeting = greetingRepository.findById(id);
+        return greeting.orElseThrow(() -> new RuntimeException("Greeting not found with ID: " + id));
+    }
+}
 }
