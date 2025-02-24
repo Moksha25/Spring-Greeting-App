@@ -39,6 +39,12 @@ public class GreetingController {
         return greetingService.updateGreeting(id, updatedGreeting.getMessage());
     }
 
+    @DeleteMapping("/greeting/{id}")
+    public ResponseEntity<String> deleteGreeting(@PathVariable Long id) {
+        greetingService.deleteGreeting(id);
+        return ResponseEntity.ok("Greeting with ID " + id + " has been deleted successfully.");
+    }
+
     private String generateGreetingMessage(String firstName, String lastName) {
         if (firstName != null && !firstName.isEmpty() && lastName != null && !lastName.isEmpty()) {
             return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
