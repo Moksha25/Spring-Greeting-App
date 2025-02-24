@@ -21,10 +21,14 @@ public class GreetingController {
     public ResponseEntity<Greeting> getGreeting() {
         return ResponseEntity.ok(new Greeting(greetingService.getGreetingMessage()));
     }
-
     @GetMapping("/greetings")
     public List<GreetingEntity> getAllGreetings() {
         return greetingService.getAllGreetings();
+  
+    @GetMapping("/greeting/{id}")
+    public GreetingEntity getGreetingById(@PathVariable Long id) {
+        return greetingService.getGreetingById(id);
+
     }
 
     @PostMapping("/greeting")
@@ -33,7 +37,7 @@ public class GreetingController {
         GreetingEntity savedGreeting = greetingService.saveGreetingMessage(message);
         return ResponseEntity.status(201).body(savedGreeting);
     }
-
+      
     private String generateGreetingMessage(String firstName, String lastName) {
         if (firstName != null && !firstName.isEmpty() && lastName != null && !lastName.isEmpty()) {
             return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
