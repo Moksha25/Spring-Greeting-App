@@ -37,7 +37,12 @@ public class GreetingController {
         GreetingEntity savedGreeting = greetingService.saveGreetingMessage(message);
         return ResponseEntity.status(201).body(savedGreeting);
     }
-      
+
+    @PutMapping("/greeting/{id}")
+    public GreetingEntity updateGreeting(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
+        return greetingService.updateGreeting(id, updatedGreeting.getMessage());
+    }
+
     private String generateGreetingMessage(String firstName, String lastName) {
         if (firstName != null && !firstName.isEmpty() && lastName != null && !lastName.isEmpty()) {
             return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
