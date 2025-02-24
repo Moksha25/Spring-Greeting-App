@@ -26,7 +26,6 @@ public class GreetingController {
         GreetingEntity savedGreeting = greetingService.saveGreetingMessage(message);
         return ResponseEntity.status(201).body(savedGreeting);
     }
-
     private String generateGreetingMessage(String firstName, String lastName) {
         if (firstName != null && !firstName.isEmpty() && lastName != null && !lastName.isEmpty()) {
             return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
