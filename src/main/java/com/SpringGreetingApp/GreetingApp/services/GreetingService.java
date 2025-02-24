@@ -28,3 +28,4 @@ public class GreetingService {
         return greeting.orElseThrow(() -> new RuntimeException("Greeting not found with ID: " + id));
     }
 }
+}
