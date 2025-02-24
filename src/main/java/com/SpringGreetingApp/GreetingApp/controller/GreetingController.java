@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/hello")
 public class GreetingController {
@@ -18,6 +20,11 @@ public class GreetingController {
     @GetMapping("/greeting")
     public ResponseEntity<Greeting> getGreeting() {
         return ResponseEntity.ok(new Greeting(greetingService.getGreetingMessage()));
+    }
+
+    @GetMapping("/greetings")
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingService.getAllGreetings();
     }
 
     @PostMapping("/greeting")

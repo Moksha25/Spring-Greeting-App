@@ -5,6 +5,8 @@ import com.SpringGreetingApp.GreetingApp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GreetingService {
 
@@ -13,6 +15,10 @@ public class GreetingService {
 
     public String getGreetingMessage() {
         return "Hello World!";
+    }
+
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingRepository.findAll();
     }
 
     public GreetingEntity saveGreetingMessage(String message) {
